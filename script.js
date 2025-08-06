@@ -41,5 +41,34 @@ function getHumanChoice () {
 
 }
 
-console.log(getComputerChoice());
-console.log(getHumanChoice());
+function playRound(humanChoice, computerChoice) {
+
+    if (map.get(humanChoice) === computerChoice) {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        humanScore++;
+    }
+    else if (map.get(computerChoice) === humanChoice) {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        computerScore++;
+    }
+    else {
+        console.log(`It's a tie!`)
+    }
+}
+
+const map = new Map();
+
+map.set("rock", "scissors");
+map.set("paper", "rock");
+map.set("scissors", "paper");
+
+let humanChoice = getHumanChoice();
+let computerChoice = getComputerChoice();
+
+let humanScore = 0;
+let computerScore = 0;
+
+
+playRound(humanChoice, computerChoice); 
+console.log(humanScore);
+console.log(computerScore);
