@@ -1,8 +1,15 @@
 function getComputerChoice() {
 
-    console.log(Math.floor(Math.random() * 3));
+    let randomNum = Math.floor(Math.random() * 3);
 
-
+    switch (randomNum) {
+        case 0:
+            return "rock";
+        case 1:
+            return "paper"
+        case 2:
+            return "scissors"
+    }
 }
 
-getComputerChoice();
+console.log(getComputerChoice());
