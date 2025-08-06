@@ -20,7 +20,7 @@ function getHumanChoice () {
     let isValidChoice = false;
 
     while (isValidChoice === false) {
-        let humanChoice = prompt("Let's Play a Game! Enter - 0: rock,  1: paper, 2: scissors: ");
+        let humanChoice = prompt("\n Let's Play a Game! Enter - 0: rock,  1: paper, 2: scissors: ");
         let humanChoiceNum = Number(humanChoice);
 
         if (humanChoice >= 0 && humanChoice <= 2) {
@@ -44,15 +44,15 @@ function getHumanChoice () {
 function playRound(humanChoice, computerChoice) {
 
     if (map.get(humanChoice) === computerChoice) {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        console.log('\x1b[36m%s\x1b[0m', `\n You win! ${humanChoice} beats ${computerChoice} \n`);
         humanScore++;
     }
     else if (map.get(computerChoice) === humanChoice) {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        console.log('\x1b[36m%s\x1b[0m', `\n You lose! ${computerChoice} beats ${humanChoice} \n`);
         computerScore++;
     }
     else {
-        console.log(`It's a tie!`)
+        console.log('\x1b[36m%s\x1b[0m' ,`\n It's a tie! \n`)
     }
 }
 
@@ -62,13 +62,25 @@ map.set("rock", "scissors");
 map.set("paper", "rock");
 map.set("scissors", "paper");
 
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice();
 
 let humanScore = 0;
 let computerScore = 0;
 
+while (humanScore <= 9 && computerScore <= 9) {
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+    
+    
+    
+    playRound(humanChoice, computerChoice); 
+    console.log(`Your Score: ${humanScore}`);
+    console.log(`Computer's Score: ${computerScore}`);
+}
 
-playRound(humanChoice, computerChoice); 
-console.log(humanScore);
-console.log(computerScore);
+if (humanScore === 10) {
+    console.log("You won the game!")
+} 
+else {
+    console.log("You lost the game!")
+}
+
