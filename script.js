@@ -56,6 +56,31 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
+function playGame(rounds) {
+    
+    let roundCount = 0;
+    
+    while (roundCount < rounds) {
+        
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
+        
+        
+        
+        playRound(humanChoice, computerChoice); 
+        console.log(`Your Score: ${humanScore}`);
+        console.log(`Computer's Score: ${computerScore}`);
+        
+        roundCount++;
+    }
+    
+    if (humanScore === 10) {
+        console.log("You won the game!")
+    } 
+    else {
+        console.log("You lost the game!")
+    }
+}
 const map = new Map();
 
 map.set("rock", "scissors");
@@ -65,34 +90,5 @@ map.set("scissors", "paper");
 
 let humanScore = 0;
 let computerScore = 0;
-
-
-function playGame(rounds) {
-
-    let roundCount = 0;
-
-    while (roundCount < rounds) {
-        
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice();
-    
-    
-    
-        playRound(humanChoice, computerChoice); 
-        console.log(`Your Score: ${humanScore}`);
-        console.log(`Computer's Score: ${computerScore}`);
-
-        roundCount++;
-    }
-
-    if (humanScore === 10) {
-        console.log("You won the game!")
-    } 
-    else {
-        console.log("You lost the game!")
-    }
-}
-
-
 
 playGame(10);
