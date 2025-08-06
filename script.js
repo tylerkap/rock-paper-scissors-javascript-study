@@ -66,21 +66,33 @@ map.set("scissors", "paper");
 let humanScore = 0;
 let computerScore = 0;
 
-while (humanScore <= 9 && computerScore <= 9) {
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
+
+function playGame(rounds) {
+
+    let roundCount = 0;
+
+    while (roundCount < rounds) {
+        
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
     
     
     
-    playRound(humanChoice, computerChoice); 
-    console.log(`Your Score: ${humanScore}`);
-    console.log(`Computer's Score: ${computerScore}`);
+        playRound(humanChoice, computerChoice); 
+        console.log(`Your Score: ${humanScore}`);
+        console.log(`Computer's Score: ${computerScore}`);
+
+        roundCount++;
+    }
+
+    if (humanScore === 10) {
+        console.log("You won the game!")
+    } 
+    else {
+        console.log("You lost the game!")
+    }
 }
 
-if (humanScore === 10) {
-    console.log("You won the game!")
-} 
-else {
-    console.log("You lost the game!")
-}
 
+
+playGame(10);
